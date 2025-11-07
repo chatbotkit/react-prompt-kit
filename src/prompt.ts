@@ -137,7 +137,7 @@ function serializeCustomElement(
   const openTag = propsStr ? `<${tag} ${propsStr}>` : `<${tag}>`
 
   if (children) {
-    return `${openTag}${children}</${tag}>`
+    return `${openTag}\n${children}\n</${tag}>`
   }
 
   return `<${tag} />`
