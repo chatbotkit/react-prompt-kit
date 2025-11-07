@@ -23,7 +23,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf dist && tsc",
     "check": "tsc --noEmit --incremental",
     "clean": "rimraf dist *.tsbuildinfo",
     "prepublishOnly": "pnpm run build",
