@@ -29,6 +29,29 @@ const blockLevelTags = new Set([
 const listItemTags = new Set(['li'])
 
 /**
+ * Strip XML tags from a string
+ */
+function stripXMLTags(text: string): string {
+  return text.replace(/<[^>]+>/g, '')
+}
+
+/**
+ * Normalize whitespace by replacing newlines with spaces and collapsing
+ * multiple spaces
+ */
+function normalizeWhitespace(text: string): string {
+  return text.replace(/\s+/g, ' ').trim()
+}
+
+/**
+ * Prepare text for inline contexts like headings by stripping XML and
+ * normalizing whitespace
+ */
+function prepareInlineText(text: string): string {
+  return normalizeWhitespace(stripXMLTags(text))
+}
+
+/**
  * Mapping of standard HTML tags to Markdown conversion functions
  */
 const tagToMarkdown: Record<
@@ -37,12 +60,12 @@ const tagToMarkdown: Record<
 > = {
   // headings
 
-  h1: (children) => `# ${children}`,
-  h2: (children) => `## ${children}`,
-  h3: (children) => `### ${children}`,
-  h4: (children) => `#### ${children}`,
-  h5: (children) => `##### ${children}`,
-  h6: (children) => `###### ${children}`,
+  h1: (children) => `# ${prepareInlineText(children)}`,
+  h2: (children) => `## ${prepareInlineText(children)}`,
+  h3: (children) => `### ${prepareInlineText(children)}`,
+  h4: (children) => `#### ${prepareInlineText(children)}`,
+  h5: (children) => `##### ${prepareInlineText(children)}`,
+  h6: (children) => `###### ${prepareInlineText(children)}`,
 
   // paragraph
 

@@ -33,6 +33,35 @@ describe('prompt', () => {
       const result = prompt(<h6>test</h6>)
       expect(result).toBe('###### test')
     })
+
+    it('should strip XML tags from headings', () => {
+      const result = prompt(
+        <h1>
+          System <custom>Instructions</custom> for AI
+        </h1>
+      )
+      expect(result).toBe('# System Instructions for AI')
+    })
+
+    it('should normalize whitespace in headings (replace newlines with spaces)', () => {
+      const result = prompt(
+        <h2>
+          This is a heading{'\n'}with multiple lines
+        </h2>
+      )
+      expect(result).toBe('## This is a heading with multiple lines')
+    })
+
+    it('should handle complex headings with XML and newlines', () => {
+      const result = prompt(
+        <h1>
+          Welcome to{'\n'}
+          <emphasis>React Prompt Kit</emphasis>
+          {'\n'}Documentation
+        </h1>
+      )
+      expect(result).toBe('# Welcome to React Prompt Kit Documentation')
+    })
   })
 
   describe('paragraphs', () => {
