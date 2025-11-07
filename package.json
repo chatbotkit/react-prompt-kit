@@ -26,7 +26,7 @@
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "check": "tsc --noEmit --incremental",
     "clean": "rimraf dist *.tsbuildinfo",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "npm run build",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "keywords": [],
