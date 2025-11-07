@@ -153,7 +153,11 @@ function isBlockLevelElement(child: JSXChild): boolean {
     'type' in child &&
     typeof child.type === 'string'
   ) {
-    return blockLevelTags.has(child.type.toLowerCase())
+    const tag = child.type.toLowerCase()
+
+    // @note custom elements (non-standard HTML) are treated as block-level for proper spacing
+
+    return blockLevelTags.has(tag) || !isStandardHTMLTag(tag)
   }
 
   return false
