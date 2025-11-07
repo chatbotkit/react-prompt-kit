@@ -442,6 +442,7 @@ describe('prompt', () => {
 
     it('should escape backticks in code blocks', () => {
       // code contains ``` so wrapper should use ````
+
       const result = prompt(
         <pre data-language="markdown">
           {`This is how you write code blocks:
@@ -465,11 +466,15 @@ console.log('hello')
       // code contains ```` so wrapper should use `````
       const result = prompt(<pre>{`Code with \`\`\`\` backticks`}</pre>)
 
-      expect(result).toBe(`\`\`\`\`\`\nCode with \`\`\`\` backticks\n\`\`\`\`\``)
+      expect(result).toBe(
+        `\`\`\`\`\`\nCode with \`\`\`\` backticks\n\`\`\`\`\``
+      )
     })
 
     it('should use default fence when no backticks in content', () => {
-      const result = prompt(<pre data-language="javascript">console.log('hello')</pre>)
+      const result = prompt(
+        <pre data-language="javascript">console.log('hello')</pre>
+      )
 
       expect(result).toBe(`\`\`\`javascript\nconsole.log('hello')\n\`\`\``)
     })
