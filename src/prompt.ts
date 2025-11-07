@@ -39,7 +39,7 @@ function stripXMLTags(text: string): string {
  * Normalize whitespace by replacing newlines with spaces and collapsing
  * multiple spaces
  */
-function normalizeWhitespace(text: string): string {
+function collapseWhitespace(text: string): string {
   return text.replace(/\s+/g, ' ').trim()
 }
 
@@ -48,7 +48,7 @@ function normalizeWhitespace(text: string): string {
  * normalizing whitespace
  */
 function prepareInlineText(text: string): string {
-  return normalizeWhitespace(stripXMLTags(text))
+  return collapseWhitespace(stripXMLTags(text))
 }
 
 /**
