@@ -304,10 +304,15 @@ function convertElement(element: ReactElement): string {
     return serializeCustomElement(tag, props, children)
   }
 
-  // handle function/class components - convert their children
+  // handle function/class components - render them and convert the result
 
   if (typeof type === 'function') {
-    return convertChildren(props.children)
+    // @note call the function component to get its JSX output
+    // @note for class components, we would need to instantiate them, but we only use function components
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rendered = (type as (props: any) => ReactElement)(props)
+
+    return convertElement(rendered)
   }
 
   return ''
@@ -319,7 +324,7 @@ function convertElement(element: ReactElement): string {
  * @param jsx - React element(s) to convert
  * @returns Markdown string representation
  */
-export function md(jsx: ReactElement | ReactElement[]): string {
+export function prompt(jsx: ReactElement | ReactElement[]): string {
   if (Array.isArray(jsx)) {
     return jsx.map((element) => convertElement(element)).join('\n\n')
   }
@@ -330,4 +335,4 @@ export function md(jsx: ReactElement | ReactElement[]): string {
 /**
  * Default export for convenience
  */
-export default md
+export default prompt

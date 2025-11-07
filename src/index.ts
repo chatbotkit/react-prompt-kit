@@ -1,5 +1,3 @@
-import { md } from './md'
+export { default, prompt } from './prompt'
 
-export const prompt = md
-
-export default md
+export * from './components'
