@@ -1,3 +1,4 @@
+/// <reference path="./jsx.d.ts" />
 import React from 'react'
 
 import {
