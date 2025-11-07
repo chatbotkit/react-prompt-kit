@@ -2,7 +2,12 @@
   "name": "react-prompt-kit",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
   "scripts": {
     "check": "tsc --noEmit --incremental",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
