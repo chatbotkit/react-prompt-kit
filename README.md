@@ -16,7 +16,7 @@ Traditional prompt strings become hard to maintain as soon as they mix instructi
 - Automatic whitespace handling and Markdown conversion so outputs stay consistent
 - A large set of dedicated components that capture common AI prompt patterns without reinventing XML tags each time
 
-Think of it as a view layer for prompt engineering—organize prompts like UI layouts, but ship them as structured text for your model.
+Think of it as a view layer for prompt engineering-organize prompts like UI layouts, but ship them as structured text for your model.
 
 ## Features
 
