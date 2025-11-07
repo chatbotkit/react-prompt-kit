@@ -118,11 +118,7 @@ describe('prompt', () => {
     })
 
     it('should normalize whitespace in inline formatting', () => {
-      const result = prompt(
-        <em>
-          text with{'\n'}newlines
-        </em>
-      )
+      const result = prompt(<em>text with{'\n'}newlines</em>)
       expect(result).toBe('_text with newlines_')
     })
 
@@ -157,11 +153,7 @@ describe('prompt', () => {
     })
 
     it('should normalize whitespace in link text', () => {
-      const result = prompt(
-        <a href="/docs">
-          Read{'\n'}Documentation
-        </a>
-      )
+      const result = prompt(<a href="/docs">Read{'\n'}Documentation</a>)
       expect(result).toBe('[Read Documentation](/docs)')
     })
   })
