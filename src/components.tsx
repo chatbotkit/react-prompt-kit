@@ -102,10 +102,10 @@ export function Code({
   language?: string
   children: ReactNode
 }) {
-  // @note use 'codeblock' custom element to avoid conflict with standard HTML 'code' tag
+  // @note wrap in pre tag to produce markdown code blocks with backticks
   return React.createElement(
-    'codeblock',
-    { language } as React.HTMLAttributes<HTMLElement> & { language?: string },
+    'pre',
+    { 'data-language': language } as React.HTMLAttributes<HTMLPreElement>,
     children
   )
 }
