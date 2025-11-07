@@ -252,17 +252,17 @@ describe('prompt', () => {
   describe('custom elements', () => {
     it('should preserve custom element without attributes', () => {
       const result = prompt(<custom-element>test</custom-element>)
-      expect(result).toBe('<custom-element>test</custom-element>')
+      expect(result).toBe('<custom-element>\ntest\n</custom-element>')
     })
 
     it('should preserve custom element with string attributes', () => {
       const result = prompt(<custom-element name="value">test</custom-element>)
-      expect(result).toBe('<custom-element name="value">test</custom-element>')
+      expect(result).toBe('<custom-element name="value">\ntest\n</custom-element>')
     })
 
     it('should preserve custom element with boolean attributes', () => {
       const result = prompt(<custom-element enabled>test</custom-element>)
-      expect(result).toBe('<custom-element enabled>test</custom-element>')
+      expect(result).toBe('<custom-element enabled>\ntest\n</custom-element>')
     })
 
     it('should preserve custom element with mixed attributes', () => {
@@ -272,7 +272,7 @@ describe('prompt', () => {
         </custom-element>
       )
       expect(result).toBe(
-        '<custom-element name="test" enabled>content</custom-element>'
+        '<custom-element name="test" enabled>\ncontent\n</custom-element>'
       )
     })
 
@@ -327,7 +327,7 @@ describe('prompt', () => {
 
     it('should handle example 2: custom element preserved', () => {
       const result = prompt(<custom-element>test</custom-element>)
-      expect(result).toBe('<custom-element>test</custom-element>')
+      expect(result).toBe('<custom-element>\ntest\n</custom-element>')
     })
   })
 
@@ -360,7 +360,7 @@ describe('prompt', () => {
         </>
       )
       expect(result).toBe(
-        '## Instructions\n\nUse the following tool:<tool-definition name="search">Search the web</tool-definition>'
+        '## Instructions\n\nUse the following tool:\n\n<tool-definition name="search">\nSearch the web\n</tool-definition>'
       )
     })
   })
