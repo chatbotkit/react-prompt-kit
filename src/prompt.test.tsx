@@ -1,5 +1,7 @@
+/// <reference path="./jsx.d.ts" />
 import React from 'react'
 
+import { Context, Task } from './components'
 import { prompt } from './prompt'
 
 describe('prompt', () => {
@@ -489,6 +491,46 @@ console.log('hello')
       )
 
       expect(result).toBe(`\`\`\`javascript\nconsole.log('hello')\n\`\`\``)
+    })
+  })
+
+  describe('spacing behaviour', () => {
+    it('should preserve explicit spaces between inline elements', () => {
+      const result = prompt(
+        <p>
+          <strong>Bold</strong> text
+        </p>
+      )
+
+      expect(result).toBe('**Bold** text')
+    })
+
+    it('should insert blank lines between custom block elements', () => {
+      const result = prompt(
+        <>
+          <Context>
+            <p>One</p>
+          </Context>
+          {'\n'}
+          <Task>
+            <p>Two</p>
+          </Task>
+        </>
+      )
+
+      expect(result).toBe('<context>\nOne\n</context>\n\n<task>\nTwo\n</task>')
+    })
+
+    it('should avoid blank lines between list items even with whitespace nodes', () => {
+      const result = prompt(
+        <ul>
+          <li>First</li>
+          {'\n'}
+          <li>Second</li>
+        </ul>
+      )
+
+      expect(result).toBe('- First\n- Second')
     })
   })
 })
