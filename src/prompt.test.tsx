@@ -133,7 +133,11 @@ describe('prompt', () => {
     })
 
     it('should collapse newlines in inline code', () => {
-      const result = prompt(<code>line1{'\n'}line2{'\n'}line3</code>)
+      const result = prompt(
+        <code>
+          line1{'\n'}line2{'\n'}line3
+        </code>
+      )
       expect(result).toBe('`line1 line2 line3`')
     })
   })
