@@ -107,6 +107,33 @@ describe('prompt', () => {
       const result = prompt(<s>strike</s>)
       expect(result).toBe('~~strike~~')
     })
+
+    it('should strip XML tags from inline formatting', () => {
+      const result = prompt(
+        <strong>
+          This is <custom>important</custom> text
+        </strong>
+      )
+      expect(result).toBe('**This is important text**')
+    })
+
+    it('should normalize whitespace in inline formatting', () => {
+      const result = prompt(
+        <em>
+          text with{'\n'}newlines
+        </em>
+      )
+      expect(result).toBe('_text with newlines_')
+    })
+
+    it('should handle code with XML and whitespace', () => {
+      const result = prompt(
+        <code>
+          const x = <value>1</value>
+        </code>
+      )
+      expect(result).toBe('`const x = 1`')
+    })
   })
 
   describe('links', () => {
@@ -118,6 +145,24 @@ describe('prompt', () => {
     it('should handle a tag without href', () => {
       const result = prompt(<a>link</a>)
       expect(result).toBe('[link]()')
+    })
+
+    it('should strip XML tags from link text', () => {
+      const result = prompt(
+        <a href="https://example.com">
+          Click <emphasis>here</emphasis> for more
+        </a>
+      )
+      expect(result).toBe('[Click here for more](https://example.com)')
+    })
+
+    it('should normalize whitespace in link text', () => {
+      const result = prompt(
+        <a href="/docs">
+          Read{'\n'}Documentation
+        </a>
+      )
+      expect(result).toBe('[Read Documentation](/docs)')
     })
   })
 

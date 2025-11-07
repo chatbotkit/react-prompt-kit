@@ -73,20 +73,21 @@ const tagToMarkdown: Record<
 
   // text formatting
 
-  strong: (children) => `**${children}**`,
-  b: (children) => `**${children}**`,
-  em: (children) => `_${children}_`,
-  i: (children) => `_${children}_`,
-  code: (children) => `\`${children}\``,
-  del: (children) => `~~${children}~~`,
-  s: (children) => `~~${children}~~`,
+  strong: (children) => `**${prepareInlineText(children)}**`,
+  b: (children) => `**${prepareInlineText(children)}**`,
+  em: (children) => `_${prepareInlineText(children)}_`,
+  i: (children) => `_${prepareInlineText(children)}_`,
+  code: (children) => `\`${prepareInlineText(children)}\``,
+  del: (children) => `~~${prepareInlineText(children)}~~`,
+  s: (children) => `~~${prepareInlineText(children)}~~`,
 
   // links
 
   a: (children, props) => {
     const href = props?.href as string | undefined
+    const text = prepareInlineText(children)
 
-    return href ? `[${children}](${href})` : `[${children}]()`
+    return href ? `[${text}](${prepareInlineText(href)})` : `[${text}]()`
   },
 
   // lists
