@@ -1,4 +1,10 @@
-# React Prompt Kit
+```
+React
+▗▄▄▖ ▗▄▄▖  ▗▄▖ ▗▖  ▗▖▗▄▄▖▗▄▄▄▖▗▖ ▗▖▗▄▄▄▖▗▄▄▄▖
+▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▛▚▞▜▌▐▌ ▐▌ █  ▐▌▗▞▘  █    █
+▐▛▀▘ ▐▛▀▚▖▐▌ ▐▌▐▌  ▐▌▐▛▀▘  █  ▐▛▚▖   █    █
+▐▌   ▐▌ ▐▌▝▚▄▞▘▐▌  ▐▌▐▌    █  ▐▌ ▐▌▗▄█▄▖  █
+```
 
 A React-based toolkit for building structured prompts using JSX, inspired by Claude's XML tags best practices.
 
