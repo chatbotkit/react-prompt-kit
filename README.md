@@ -8,6 +8,16 @@ React
 
 A React-based toolkit for building structured prompts using JSX, inspired by Claude's XML tags best practices.
 
+## Why React Prompt Kit?
+
+Traditional prompt strings become hard to maintain as soon as they mix instructions, examples, and formatting rules. React Prompt Kit lets you compose those pieces using familiar JSX, then reliably renders them into clean XML/Markdown that large language models understand. You get:
+
+- Readable, declarative prompt definitions that live alongside your React code
+- Automatic whitespace handling and Markdown conversion so outputs stay consistent
+- A large set of dedicated components that capture common AI prompt patterns without reinventing XML tags each time
+
+Think of it as a view layer for prompt engineering—organize prompts like UI layouts, but ship them as structured text for your model.
+
 ## Features
 
 - 🎯 **Structured Prompts** - Use React components to build well-organized prompts
