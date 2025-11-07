@@ -129,6 +129,8 @@ describe('prompt', () => {
         </code>
       )
       // @note inline code preserves XML tags but collapses whitespace (including around tags)
+      // @warning custom elements add newlines (\n) which become spaces when collapsed
+      // so <value>1</value> becomes "<value>\n1\n</value>" then "<value> 1 </value>"
       expect(result).toBe('`const x = <value> 1 </value>`')
     })
 
