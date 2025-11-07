@@ -1,6 +1,6 @@
 {
   "name": "react-prompt-kit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React components for prompt engineering",
   "type": "module",
   "main": "./dist/index.js",
@@ -23,14 +23,19 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
     "check": "tsc --noEmit --incremental",
     "clean": "rimraf dist *.tsbuildinfo",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "pnpm run test && pnpm run build",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "prompt-engineering",
+    "llm",
+    "jsx",
+    "markdown"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",

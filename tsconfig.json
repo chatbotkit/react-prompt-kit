@@ -19,11 +19,6 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./examples/**/*.ts",
-    "./examples/**/*.tsx"
-  ],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
 }
