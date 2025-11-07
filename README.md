@@ -378,15 +378,15 @@ Block-level elements and custom XML tags preserve their structure with newlines:
 
 Inline elements **strip XML tags and normalize whitespace** to prevent injection attacks and ensure clean markdown. **Exception:** `<code>` preserves XML tags (as literal text) but still normalizes whitespace.
 
-| Element Type | Input                                   | Output                      |
-| ------------ | --------------------------------------- | --------------------------- |
-| Headings     | `<h1><task>Title</task></h1>`           | `# Title`                   |
-| Strong       | `<strong><bad>text</bad></strong>`      | `**text**`                  |
-| Emphasis     | `<em>line1\nline2</em>`                 | `_line1 line2_`             |
+| Element Type | Input                                   | Output                          |
+| ------------ | --------------------------------------- | ------------------------------- |
+| Headings     | `<h1><task>Title</task></h1>`           | `# Title`                       |
+| Strong       | `<strong><bad>text</bad></strong>`      | `**text**`                      |
+| Emphasis     | `<em>line1\nline2</em>`                 | `_line1 line2_`                 |
 | Code         | `<code><tag>text</tag>\nline2</code>`   | `` `<tag> text </tag> line2` `` |
-| Links        | `<a href="/url">link\ntext</a>`         | `[link text](/url)`         |
-| List Items   | `<li><tag>item</tag></li>`              | `- item`                    |
-| Blockquotes  | `<blockquote>line1\nline2</blockquote>` | `> line1 line2`             |
+| Links        | `<a href="/url">link\ntext</a>`         | `[link text](/url)`             |
+| List Items   | `<li><tag>item</tag></li>`              | `- item`                        |
+| Blockquotes  | `<blockquote>line1\nline2</blockquote>` | `> line1 line2`                 |
 
 ### Code Block Escaping
 
