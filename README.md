@@ -7,8 +7,8 @@ A React-based toolkit for building structured prompts using JSX, inspired by Cla
 - 🎯 **Structured Prompts** - Use React components to build well-organized prompts
 - 🏷️ **XML Tag Preservation** - Components output proper XML tags for AI prompt engineering
 - 📝 **Markdown Conversion** - Standard HTML elements convert to clean Markdown
-- � **Security-Aware** - Inline elements strip XML tags and normalize whitespace to prevent injection
-- �🔧 **TypeScript Support** - Full type definitions included
+- 🔒 **Security-Aware** - Inline elements strip XML tags and normalize whitespace to prevent injection
+- 🔧 **TypeScript Support** - Full type definitions included
 - 🧩 **Composable** - Mix and match 50+ pre-built components
 - 🎨 **Flexible** - Use with any LLM that supports structured prompts
 - 🛡️ **Code Block Escaping** - Automatically escapes backticks in code blocks using proper markdown fencing
@@ -280,9 +280,9 @@ Both produce the same markdown code block output.
 
 The library is written in TypeScript and provides full type definitions:
 
-````tsx
-import { prompt, Instructions, Context } from 'react-prompt-kit'
+```tsx
 import type { ReactNode } from 'react'
+import { Context, Instructions, prompt } from 'react-prompt-kit'
 
 // All components accept ReactNode children
 const MyComponent = ({ children }: { children: ReactNode }) => (
@@ -292,19 +292,20 @@ const MyComponent = ({ children }: { children: ReactNode }) => (
 )
 
 const result = prompt(<MyComponent>Custom content</MyComponent>)
+```
 
 ## Real-World Example
 
 ```tsx
 import {
-  prompt,
   Context,
-  Task,
   Data,
-  Instructions,
-  Formatting,
-  Examples,
   Example,
+  Examples,
+  Formatting,
+  Instructions,
+  Task,
+  prompt,
 } from 'react-prompt-kit'
 
 const createAnalysisPrompt = (reportData: string) =>
@@ -357,7 +358,7 @@ const createAnalysisPrompt = (reportData: string) =>
 // Use in your application
 const result = createAnalysisPrompt('Revenue: $15.2M, Costs: $8.1M...')
 console.log(result)
-````
+```
 
 ## Component Behavior Summary
 
@@ -632,12 +633,6 @@ const analyzeLegalContract = (contract: string, standardContract: string) => {
           </li>
           <li>Note unusual or concerning terms</li>
           <li>Compare to our standard contract</li>
-          <li>
-            Summarize findings in <code>&lt;findings&gt;</code> tags
-          </li>
-          <li>
-            List recommendations in <code>&lt;recommendations&gt;</code> tags
-          </li>
         </ul>
       </instructions>
     </>
@@ -658,16 +653,8 @@ const solveComplexProblem = (problem: string) => {
       <instructions>
         <p>
           Before providing your final answer, work through the problem step by
-          step:
+          step. Show your reasoning process, then provide your final solution.
         </p>
-        <ul>
-          <li>
-            Use <code>&lt;thinking&gt;</code> tags to show your reasoning
-          </li>
-          <li>
-            Provide your final solution in <code>&lt;answer&gt;</code> tags
-          </li>
-        </ul>
       </instructions>
     </>
   )
