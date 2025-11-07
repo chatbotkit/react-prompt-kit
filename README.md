@@ -69,6 +69,17 @@ console.log(myPrompt)
 // </instructions>
 ```
 
+## Running the Demo
+
+A runnable demonstration lives in `examples/demo.tsx`. To try it locally:
+
+```bash
+npm install
+npx tsx examples/demo.tsx
+```
+
+The script prints several sample prompts and shows how the components render into XML and Markdown. If you prefer another package manager, substitute the equivalent install and `tsx` execution commands.
+
 ## Basic Usage
 
 The library provides a `prompt()` function that converts JSX/React elements to Markdown, and a set of prompt engineering components that output XML tags.
