@@ -94,14 +94,14 @@ const tagToMarkdown: Record<
 
   ul: (children) => children,
   ol: (children) => children,
-  li: (children) => `- ${children}`,
+  li: (children) => `- ${prepareInlineText(children)}`,
 
   // blockquote
 
   blockquote: (children) =>
     children
       .split('\n')
-      .map((line) => `> ${line}`)
+      .map((line) => `> ${prepareInlineText(line)}`)
       .join('\n'),
 
   // horizontal rule
