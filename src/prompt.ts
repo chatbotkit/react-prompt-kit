@@ -52,6 +52,22 @@ function prepareInlineText(text: string): string {
 }
 
 /**
+ * Find the longest sequence of backticks in a string and return a fence
+ * with one more backtick
+ */
+function getCodeFence(content: string): string {
+  const backtickMatches = content.match(/`+/g)
+
+  if (!backtickMatches) {
+    return '```'
+  }
+
+  const maxLength = Math.max(...backtickMatches.map((match) => match.length))
+
+  return '`'.repeat(maxLength + 1)
+}
+
+/**
  * Mapping of standard HTML tags to Markdown conversion functions
  */
 const tagToMarkdown: Record<
@@ -119,9 +135,13 @@ const tagToMarkdown: Record<
       | string
       | undefined
 
+    const fence = getCodeFence(children)
+
     return language
-      ? `\`\`\`${language}\n${children}\n\`\`\``
-      : `\`\`\`\n${children}\n\`\`\``
+      ? `${fence}${
+          language ? prepareInlineText(language) : ''
+        }\n${children}\n${fence}`
+      : `${fence}\n${children}\n${fence}`
   },
 }
 
