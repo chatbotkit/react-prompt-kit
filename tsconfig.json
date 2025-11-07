@@ -1,21 +1,24 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "noEmit": true,
-    "composite": true,
     "target": "es2019",
     "module": "esnext",
     "moduleResolution": "bundler",
-    "lib": ["DOM"],
+    "lib": ["DOM", "ES2019"],
     "jsx": "react",
     "allowJs": true,
     "checkJs": true,
     "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "composite": true,
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/**/*.js"],
-  "exclude": ["node_modules"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
 }
