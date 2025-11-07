@@ -318,26 +318,6 @@ function convertElement(element: ReactElement): string {
  *
  * @param jsx - React element(s) to convert
  * @returns Markdown string representation
- *
- * @example
- * ```tsx
- * import { jsxToMarkdown } from '@chatbotkit-dev/jsx-to-markdown'
- *
- * const result = jsxToMarkdown(
- *   <>
- *     <h1>Hello World</h1>
- *     <p>This is a <strong>test</strong></p>
- *   </>
- * )
- * // result: "# Hello World\n\nThis is a **test**"
- * ```
- *
- * @example
- * ```tsx
- * // Custom elements are preserved
- * const result = jsxToMarkdown(<custom-element>test</custom-element>)
- * // result: "<custom-element>test</custom-element>"
- * ```
  */
 export function md(jsx: ReactElement | ReactElement[]): string {
   if (Array.isArray(jsx)) {
