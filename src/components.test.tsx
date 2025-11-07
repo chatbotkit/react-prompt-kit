@@ -286,13 +286,6 @@ describe('prompt engineering components', () => {
               </li>
               <li>Note unusual or concerning terms</li>
               <li>Compare to our standard contract</li>
-              <li>
-                Summarize findings in <code>&lt;findings&gt;</code> tags
-              </li>
-              <li>
-                List recommendations in <code>&lt;recommendations&gt;</code>{' '}
-                tags
-              </li>
             </ul>
           </instructions>
         </>
@@ -306,7 +299,7 @@ describe('prompt engineering components', () => {
       expect(result).toContain('</document>')
       expect(result).toContain('<instructions>')
       expect(result).toContain('Indemnification')
-      expect(result).toContain('`<findings>`')
+      expect(result).toContain('Compare to our standard contract')
     })
 
     it('should preserve custom XML tags for task and constraints', () => {
