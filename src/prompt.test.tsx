@@ -128,7 +128,13 @@ describe('prompt', () => {
           const x = <value>1</value>
         </code>
       )
-      expect(result).toBe('`const x = 1`')
+      // @note inline code preserves XML tags but collapses whitespace (including around tags)
+      expect(result).toBe('`const x = <value> 1 </value>`')
+    })
+
+    it('should collapse newlines in inline code', () => {
+      const result = prompt(<code>line1{'\n'}line2{'\n'}line3</code>)
+      expect(result).toBe('`line1 line2 line3`')
     })
   })
 

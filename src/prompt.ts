@@ -52,6 +52,13 @@ function prepareInlineText(text: string): string {
 }
 
 /**
+ * Prepare text for inline code - keep content as-is but collapse whitespace
+ */
+function prepareInlineCode(text: string): string {
+  return collapseWhitespace(text)
+}
+
+/**
  * Find the longest sequence of backticks in a string and return a fence
  * with one more backtick
  */
@@ -93,7 +100,7 @@ const tagToMarkdown: Record<
   b: (children) => `**${prepareInlineText(children)}**`,
   em: (children) => `_${prepareInlineText(children)}_`,
   i: (children) => `_${prepareInlineText(children)}_`,
-  code: (children) => `\`${prepareInlineText(children)}\``,
+  code: (children) => `\`${prepareInlineCode(children)}\``,
   del: (children) => `~~${prepareInlineText(children)}~~`,
   s: (children) => `~~${prepareInlineText(children)}~~`,
 
