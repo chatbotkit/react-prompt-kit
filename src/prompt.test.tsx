@@ -44,11 +44,7 @@ describe('prompt', () => {
     })
 
     it('should normalize whitespace in headings (replace newlines with spaces)', () => {
-      const result = prompt(
-        <h2>
-          This is a heading{'\n'}with multiple lines
-        </h2>
-      )
+      const result = prompt(<h2>This is a heading{'\n'}with multiple lines</h2>)
       expect(result).toBe('## This is a heading with multiple lines')
     })
 
