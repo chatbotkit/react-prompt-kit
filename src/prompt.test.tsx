@@ -257,7 +257,9 @@ describe('prompt', () => {
 
     it('should preserve custom element with string attributes', () => {
       const result = prompt(<custom-element name="value">test</custom-element>)
-      expect(result).toBe('<custom-element name="value">\ntest\n</custom-element>')
+      expect(result).toBe(
+        '<custom-element name="value">\ntest\n</custom-element>'
+      )
     })
 
     it('should preserve custom element with boolean attributes', () => {
