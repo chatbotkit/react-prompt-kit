@@ -151,10 +151,10 @@ describe('prompt engineering components', () => {
     it('should work with Code component and language prop', () => {
       const result = prompt(<Code language="typescript">const x = 1;</Code>)
 
-      // @note Code component creates <codeblock> XML tags with language attribute
-      expect(result).toContain('<codeblock language="typescript">')
+      // @note Code component wraps pre tag to produce markdown code blocks
+      expect(result).toContain('```typescript')
       expect(result).toContain('const x = 1;')
-      expect(result).toContain('</codeblock>')
+      expect(result).toContain('```')
     })
   })
 
