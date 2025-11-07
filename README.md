@@ -376,17 +376,17 @@ Block-level elements and custom XML tags preserve their structure with newlines:
 
 ### Inline Elements (XML Stripped, Whitespace Normalized)
 
-Inline elements **strip XML tags and normalize whitespace** to prevent injection attacks and ensure clean markdown:
+Inline elements **strip XML tags and normalize whitespace** to prevent injection attacks and ensure clean markdown. **Exception:** `<code>` preserves XML tags (as literal text) but still normalizes whitespace.
 
-| Element Type | Input                                   | Output              |
-| ------------ | --------------------------------------- | ------------------- |
-| Headings     | `<h1><task>Title</task></h1>`           | `# Title`           |
-| Strong       | `<strong><bad>text</bad></strong>`      | `**text**`          |
-| Emphasis     | `<em>line1\nline2</em>`                 | `_line1 line2_`     |
-| Code         | `<code><script>bad</script></code>`     | `` `script bad` ``  |
-| Links        | `<a href="/url">link\ntext</a>`         | `[link text](/url)` |
-| List Items   | `<li><tag>item</tag></li>`              | `- item`            |
-| Blockquotes  | `<blockquote>line1\nline2</blockquote>` | `> line1 line2`     |
+| Element Type | Input                                   | Output                      |
+| ------------ | --------------------------------------- | --------------------------- |
+| Headings     | `<h1><task>Title</task></h1>`           | `# Title`                   |
+| Strong       | `<strong><bad>text</bad></strong>`      | `**text**`                  |
+| Emphasis     | `<em>line1\nline2</em>`                 | `_line1 line2_`             |
+| Code         | `<code><tag>text</tag>\nline2</code>`   | `` `<tag> text </tag> line2` `` |
+| Links        | `<a href="/url">link\ntext</a>`         | `[link text](/url)`         |
+| List Items   | `<li><tag>item</tag></li>`              | `- item`                    |
+| Blockquotes  | `<blockquote>line1\nline2</blockquote>` | `> line1 line2`             |
 
 ### Code Block Escaping
 
@@ -700,10 +700,14 @@ const result = prompt(
 **Protected Elements** (XML stripped, whitespace normalized):
 
 - Headings (`<h1>` through `<h6>`)
-- Text formatting (`<strong>`, `<em>`, `<code>`, `<del>`)
+- Text formatting (`<strong>`, `<em>`, `<del>`)
 - Links (`<a>`)
 - List items (`<li>`)
 - Blockquote lines (individual lines within `<blockquote>`)
+
+**Partially Protected** (whitespace normalized, XML preserved):
+
+- Inline code (`<code>`) - Preserves XML tags as literal text but collapses whitespace
 
 **Preserved Elements** (structure maintained):
 
