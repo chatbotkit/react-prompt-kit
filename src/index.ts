@@ -1,5 +1,5 @@
-// @note import jsx type declarations to ensure custom JSX elements are available
-import './jsx.d'
+// @note jsx type declarations are automatically included by TypeScript from jsx.d.ts
+// @note no need to import it explicitly - doing so causes webpack to inject Fast Refresh code
 
 export { default, prompt } from './prompt'
 
