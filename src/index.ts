@@ -1,5 +1,13 @@
-// @note jsx type declarations are automatically included by TypeScript from jsx.d.ts
-// @note no need to import it explicitly - doing so causes webpack to inject Fast Refresh code
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX {
+    interface IntrinsicElements {
+      // @note allow any custom element (e.g., <task>, <context>, etc.)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      [elemName: string]: any
+    }
+  }
+}
 
 export { default, prompt } from './prompt'
 

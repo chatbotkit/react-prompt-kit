@@ -23,7 +23,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.build.json && cp src/jsx.d.ts dist/jsx.d.ts",
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
     "check": "tsc --noEmit --incremental",
     "clean": "rimraf dist *.tsbuildinfo",
     "prepublishOnly": "pnpm run test && pnpm run build",
