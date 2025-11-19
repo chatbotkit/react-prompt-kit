@@ -1,0 +1,36 @@
+# TypeScript build info files
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+tsconfig.build.tsbuildinfo
+dist/.tsbuildinfo
+
+# Development files
+tsconfig.json
+tsconfig.build.json
+jest.config.js
+.gitignore
+.git
+
+# Tests
+**/*.test.ts
+**/*.test.tsx
+**/*.test.js
+
+# Examples
+examples/
+
+# CI/CD
+.github/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
