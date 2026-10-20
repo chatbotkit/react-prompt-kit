@@ -1,4 +1,6 @@
-declare global {
+// @note React 19's types dropped the global `JSX` namespace; intrinsic
+// elements are augmented on `React.JSX`, which React 18 types expose too.
+declare module 'react' {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {

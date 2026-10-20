@@ -155,7 +155,12 @@ function collectConvertedParts(children: JSXChild): ConvertedPart[] {
  * @returns converted parts with spacing metadata
  */
 function convertElementToParts(element: ReactElement): ConvertedPart[] {
-  const { type, props } = element
+  const { type } = element
+
+  // @note `ReactElement.props` is `unknown` in React 19's types
+  const props = (element.props ?? {}) as Record<string, unknown> & {
+    children?: ReactNode
+  }
 
   if (
     typeof type === 'symbol' ||

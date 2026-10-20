@@ -1,6 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "isolatedModules": true,
+    "types": ["jest"],
     "target": "es2019",
     "module": "esnext",
     "moduleResolution": "bundler",
